@@ -1,0 +1,23 @@
+page-cart {
+    .toolbar-title {
+        font-family: $roboto-font;
+        font-weight: 300;
+    }
+    .products {
+        $btn-color: red;
+        .remove-from-cart {
+            background: $btn-color;            
+            border-radius: 100%;
+            font-size: 1.2em;
+            font-family: $roboto-font;
+            width: 25px;
+            height: 25px;
+            &:hover {
+                background: lighten($btn-color, 10%);
+            }
+        }
+    }
+    .back-button {
+        background-color: yellow;
+    }
+}

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Carrinho de Compras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center *ngIf="cart === undefined">
+    <ion-spinner></ion-spinner>
+  </div>
+  <h3 text-center *ngIf="cart !== undefined && !cart.length">Seu carrinho está vazio!</h3>
+  <ion-list class="products" *ngIf="cart !== undefined">
+    <ion-item *ngFor="let products of cart">      
+      <ion-avatar item-start>
+        <img src="{{ products[0].Photo }}">
+      </ion-avatar>
+      <h2>{{ products[0].Name }}</h2>
+      <p>Valor: $ {{ products[0].Price }}</p>
+      <p>Estoque: {{ products.length }}</p>
+      <button class="remove-from-cart" (click)="removeFromCart(products[0])" ion-button round item-end><ion-icon name="ios-close"></ion-icon></button>      
+    </ion-item>
+    <p>Total da venda: R$ <b>{{ total }}</b></p>
+    <div text-center padding>
+      <button navPop ion-button [color]="yellow"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>&nbsp;Voltar</button>
+      <button ion-button [color]="green" (click)="checkout()" [disabled]="cart === undefined || !cart.length"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>&nbsp;Fechar Venda</button>
+    </div>
+  </ion-list>
+</ion-content>
